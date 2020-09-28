@@ -32,6 +32,12 @@ const names = obj => Object.getOwnPropertyNames(obj);
 const ADD = x => x + 1;
 const n0 = SUCC(ZERO);
 const n1 = SUCC(ONCE);
+const n2 = SUCC(n1);
+const n3 = SUCC(n2);
+const n4 = SUCC(n3);
+
+
+const jsnum = n => n(x => x + 1)(0)
 
 const TAG = name => value => `<${name}>${value}</${name}>`;
 
@@ -58,6 +64,9 @@ console.log('OR: ', _or(9)(19));
 console.log('AND: ', _and(9)(19));
 console.log('OR NOT: ', _not(9)(19));
 console.log('AND NOT: ', _not_and(9)(19));
+console.log(SUCC(SUCC(ONCE))(NOT)(T))
+console.log(jsnum(SUCC(ZERO)), '0000')
+console.log(jsnum(n4), '0000')
 
 
 
