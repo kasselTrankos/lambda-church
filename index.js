@@ -53,11 +53,26 @@ const n4 = SUCC(n3);
 
 const jsnum = n => n(x => x + 1)(0);
 const jstag = n => n(x =>  `<spam>${x}</spam>`)('hoila');
+const KEYS = ONCE(names)(obj);
 
 const TAG = name => value => `<${name}>${value}</${name}>`;
-
 const SPAM = TAG('spam');
-const KEYS = ONCE(names)(obj);
+const DIV = TAG('div')
+const INSIDE = m => f => x =>  m(f(x));// y=> y//console.log(y) || f((TAG)(x)(y));
+const _spam = INSIDE(SPAM);
+const _p = INSIDE(TAG('p'));
+const _pspam = SUCC(_spam)(TAG('p'));
+const h = SUCC(DIV);
+const _s = SUCC(_p)(DIV);
+const _m =B(TAG('body'))(TAG('header'));
+
+
+console.log(B(DIV)(_m)('hola miunbd'));
+
+// console.log(INSIDE(x=> x +'1')('span'))
+// console.log(INSIDE(DIV)('p')(0));
+
+// console.log(INSIDE(SPAM)(TAG('div'))('jop'))
 
 
 // console.log('im zero ', jsnum(n0));
@@ -68,8 +83,9 @@ const KEYS = ONCE(names)(obj);
 // console.log(' SUMO n3 + n4 = n7', jsnum(ADD(n3)(n4)));
 // console.log(' SUMO n3 x n4 = n12', jsnum(MULT(n3)(n4)));
 
-console.log(jstag(ADD(n3)(n1)));
-console.log(is0(n1))
+// console.log(jstag(ADD(n3)(n1)));
+// console.log(is0(n1))
+// console.log(B(SPAM)(I)(9))
 
 
 // var t = 0 ? 'd':'f';
