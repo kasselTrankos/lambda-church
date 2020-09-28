@@ -14,6 +14,9 @@ const ONCE = f => x => f(x);
 // SUCCESSOR := λnfx.f(nfx)
 const SUCC = num => f => x => f(num(f)(x));
 
+// ADD := ƛnk.n(SUCC)k
+const ADD = n => k => n(SUCC)(k);
+
 // NOT := ƛb.bFT
 const NOT = b => b(F)(T)
 
@@ -29,9 +32,9 @@ const obj = {a: 1, b: 2};
 const names = obj => Object.getOwnPropertyNames(obj);
 
 
-const ADD = x => x + 1;
-const n0 = SUCC(ZERO);
-const n1 = SUCC(ONCE);
+const SUM = x => x + 1;
+const n0 = ZERO;
+const n1 = SUCC(n0);
 const n2 = SUCC(n1);
 const n3 = SUCC(n2);
 const n4 = SUCC(n3);
@@ -44,8 +47,8 @@ const TAG = name => value => `<${name}>${value}</${name}>`;
 const SPAM = TAG('spam');
 const KEYS = ONCE(names)(obj);
 
-console.log('1: ', n0(ADD)(0) );
-console.log('ONCE 1: ', n1(ADD)(0) );
+console.log('1: ', n0(SUM)(0) );
+console.log('ONCE 1: ', n1(SUM)(0) );
 
 console.log('hola spam: ', n0(SPAM)('hola mundo'));
 console.log('ONCE hola spam: ', n1(SPAM)('hola mundo'));
@@ -65,8 +68,9 @@ console.log('AND: ', _and(9)(19));
 console.log('OR NOT: ', _not(9)(19));
 console.log('AND NOT: ', _not_and(9)(19));
 console.log(SUCC(SUCC(ONCE))(NOT)(T))
-console.log(jsnum(SUCC(ZERO)), '0000')
-console.log(jsnum(n4), '0000')
+console.log(jsnum(n0), '1 0000')
+console.log(jsnum(n1), '2 0000')
+console.log(jsnum(ADD(n3)(n1)))
 
 
 
