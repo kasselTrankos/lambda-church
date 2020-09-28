@@ -65,10 +65,13 @@ const _pspam = SUCC(_spam)(TAG('p'));
 const h = SUCC(DIV);
 const _s = SUCC(_p)(DIV);
 const _m =B(TAG('body'))(TAG('header'));
+const t0 = B(DIV)(_m)('hola miunbd');
+const t1 = TAG('html')(t0 + '0000')
+console.log(t1);
 
+const a1 = ADD(TAG('html'))
 
-console.log(B(DIV)(_m)('hola miunbd'));
-
+console.log(SUCC(OR(I)(x => x + '0dddd'))(TAG('op'))(t0))
 // console.log(INSIDE(x=> x +'1')('span'))
 // console.log(INSIDE(DIV)('p')(0));
 
